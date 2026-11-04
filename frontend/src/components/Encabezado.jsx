@@ -176,7 +176,7 @@ function Encabezado({ textoDerecha = '', rutaDerecha = -1, mostrarAuth = false }
         )}
         {logueado && (
           <>
-            <Link to="/inicio" className="encabezado-link">Inicio</Link>
+            <Link to="/inicio" className="encabezado-link encabezado-link-perfil">Inicio</Link>
             <Link
               to="/mi-perfil"
               className="encabezado-link encabezado-link-perfil"

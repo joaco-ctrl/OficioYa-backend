@@ -107,6 +107,12 @@ async function solicitarRecuperacion(req, res) {
           console.error('Error al procesar la recuperación de contraseña:', {
               code: error.code,
               message: error.message,
+              errno: error.errno,
+              syscall: error.syscall,
+              address: error.address,
+              port: error.port,
+              command: error.command,
+              hostname: error.hostname,
               cleanupError: error.cleanupError?.message
           });
           if (error.code === 'PASSWORD_RESET_EMAIL_NOT_CONFIGURED') {

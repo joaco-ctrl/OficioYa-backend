@@ -149,6 +149,9 @@ button:disabled {
 }
 
 .encabezado-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   color: var(--azul-oscuro);
   font-size: 14px;
   font-weight: 600;
@@ -2104,12 +2107,15 @@ button:disabled {
 
 @media (max-width: 600px) {
   .encabezado {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: center;
     gap: 8px;
     padding: 10px 12px;
   }
 
   .encabezado-logo {
-    flex: 0 1 auto;
+    flex: 1 1 100%;
     gap: 8px;
   }
 
@@ -2123,10 +2129,12 @@ button:disabled {
   }
 
   .encabezado-derecha {
-    flex: 0 1 auto;
-    flex-wrap: wrap;
+    flex: 1 1 100%;
+    width: 100%;
     justify-content: flex-end;
-    margin-left: auto;
+    flex-wrap: wrap;
+    min-width: 0;
+    margin-left: 0;
   }
 
   .encabezado-link,
