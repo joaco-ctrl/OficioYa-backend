@@ -92,8 +92,8 @@ function TarjetaProfesional({ profesional, modo = 'resultado' }) {
         </section>
 
         <nav className="perfil-publico-nav" aria-label="Secciones del perfil">
-          <button type="button" aria-current={pestana === 'servicios' ? 'page' : undefined} onClick={() => setPestana('servicios')}>Servicios</button>
-          <button type="button" aria-current={pestana === 'solicitar' ? 'page' : undefined} onClick={() => setPestana('solicitar')}>Solicitar servicios</button>
+          <button type="button" aria-current={pestana === 'servicios' ? 'page' : undefined} onClick={() => setPestana('servicios')}>Ver servicios</button>
+          <button type="button" aria-current={pestana === 'solicitar' ? 'page' : undefined} onClick={() => setPestana('solicitar')}>Pedir presupuesto</button>
         </nav>
 
         {pestana === 'servicios' ? (
@@ -145,13 +145,16 @@ function TarjetaProfesional({ profesional, modo = 'resultado' }) {
           </section>
         ) : (
           <section className="perfil-publico-panel">
-            <h2>¿Qué servicio necesitás?</h2>
+            <h2>Paso 1: Elegí el servicio</h2>
+            <p style={{ color: 'var(--gris-texto)', marginBottom: '20px', fontSize: '14px' }}>
+              Seleccioná cuál de los servicios ofrecidos necesitás para poder pedirle un presupuesto a {profesional.nombre.split(' ')[0]}.
+            </p>
             {servicios.length === 0 ? (
               <p className="sin-resultados">Este profesional todavía no tiene servicios publicados.</p>
             ) : (
               <>
                 <label className="perfil-publico-selector">
-                  <span>Elegí un servicio</span>
+                  <span>Servicio:</span>
                   <select value={servicioId || ''} onChange={(event) => setServicioSeleccionado(event.target.value)}>
                     {servicios.map((servicio) => (
                       <option key={servicio.id} value={servicio.id}>
@@ -160,8 +163,12 @@ function TarjetaProfesional({ profesional, modo = 'resultado' }) {
                     ))}
                   </select>
                 </label>
+                <h2 style={{ marginTop: '30px' }}>Paso 2: Enviar solicitud</h2>
+                <p style={{ color: 'var(--gris-texto)', marginBottom: '20px', fontSize: '14px' }}>
+                  Hacé clic en el botón para completar los detalles del trabajo y enviar tu solicitud.
+                </p>
                 <button type="button" className="boton-solicitar" onClick={irASolicitar}>
-                  Solicitar presupuesto
+                  Ir al formulario de presupuesto
                 </button>
               </>
             )}
