@@ -77,6 +77,14 @@ function PerfilProfesional() {
   return (
     <>
       <Encabezado mostrarAuth={true} />
+      
+      {/* Flecha de volver con estilo */}
+      <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 24px' }}>
+        <button className="volver-resultados" onClick={() => navigate(-1)}>
+          VOLVER A RESULTADOS
+        </button>
+      </div>
+
       {cargando ? (
         <p className="sin-resultados">Cargando perfil...</p>
       ) : error ? (
@@ -87,12 +95,7 @@ function PerfilProfesional() {
           </button>
         </div>
       ) : profesional ? (
-        <>
-          <button className="volver-resultados" onClick={() => navigate(-1)}>
-            ← VOLVER A RESULTADOS
-          </button>
-          <TarjetaProfesional key={profesional.id} profesional={profesional} modo="perfil" />
-        </>
+        <TarjetaProfesional key={profesional.id} profesional={profesional} modo="perfil" />
       ) : null}
     </>
   )

@@ -140,7 +140,7 @@ function Resultados() {
       <div className="layout-resultados">
         <aside className="sidebar-filtros">
           <button className="volver-inicio" onClick={() => navigate('/')}>
-            ← VOLVER AL INICIO
+            VOLVER AL INICIO
           </button>
 
           <div className="filtros-caja">
@@ -158,33 +158,34 @@ function Resultados() {
 
             <div className="filtro-grupo">
               <label>CATEGORÍAS</label>
-              {categorias.map((categoria) => (
-                <label key={categoria.id} className="filtro-check">
-                  <input
-                    type="radio"
-                    name="oficio"
-                    value={categoria.nombre}
-                    checked={filtroOficio === categoria.nombre}
-                    onChange={(e) => setFiltroOficio(e.target.value)}
-                  />
-                  {categoria.nombre}
-                </label>
-              ))}
+              <div className="pills-container">
+                {categorias.map((categoria) => (
+                  <button
+                    key={categoria.id}
+                    type="button"
+                    className={`pill-btn ${filtroOficio === categoria.nombre ? 'activa' : ''}`}
+                    onClick={() => setFiltroOficio(filtroOficio === categoria.nombre ? '' : categoria.nombre)}
+                  >
+                    {categoria.nombre}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="filtro-grupo">
               <label>CALIFICACIÓN</label>
-              {[5, 4, 3, 2, 1].map((n) => (
-                <button
-                  key={n}
-                  type="button"
-                  className={`estrella-filtro ${filtroPuntuacion === n ? 'activa' : ''}`}
-                  onClick={() => setFiltroPuntuacion(n === filtroPuntuacion ? 0 : n)}
-                >
-                  {'★'.repeat(n)}
-                  {'☆'.repeat(5 - n)}
-                </button>
-              ))}
+              <div className="pills-container">
+                {[5, 4, 3, 2, 1].map((n) => (
+                  <button
+                    key={n}
+                    type="button"
+                    className={`pill-btn ${filtroPuntuacion === n ? 'activa' : ''}`}
+                    onClick={() => setFiltroPuntuacion(n === filtroPuntuacion ? 0 : n)}
+                  >
+                    {n} ★
+                  </button>
+                ))}
+              </div>
             </div>
 
             <button className="aplicar-filtros" onClick={aplicarFiltros}>
